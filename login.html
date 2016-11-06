@@ -3,12 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Estacionamiento TP</title>
+    <script src="javascript/jquery-3.1.1.js"></script>
+    <script src="javascript/funciones.js"></script>
+
+    </script>
   </head>
   <body>
 
-    <form class="" action="index.html" method="post">
-      <input type="email" name="email" placeholder="Ingrese su e-mail">
-      <input type="password" name="pass" placeholder="Ingrese su contraseña">
+    <form class="" method="post" onsubmit="ingresarUsuario();return false">
+      <input type="email" name="email" placeholder="Ingrese su e-mail" id="email">
+      <input type="password" name="pass" placeholder="Ingrese su contraseña" id="pass">
       <input type="submit" name="ingresar" value="Ingresar">
       <input type="button" name="usuario" value="Test Usuario" onclick="completarUsr()">
       <input type="button" name="admin" value="Test Admin" onclick="completarAdm()">
