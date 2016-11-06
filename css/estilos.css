@@ -1,0 +1,38 @@
+.contenido{
+    width: 90%;
+    margin-left:20px;
+}
+#footer {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: gray;
+  padding-top: 10px;
+  color: white;
+}
+#footer a {
+  color: black;
+}
+#botonera {
+  display: none;
+}
+
+#mensaje {
+  margin-top:100px;
+}
+.h1, h1 {
+    font-size: 36px;
+    padding: 15px;
+    margin-left: 30px;
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#listTable tr td a {
+  font-size: 18px;
+}

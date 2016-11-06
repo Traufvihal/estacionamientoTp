@@ -26,3 +26,20 @@ function ingresarUsuario() {
     alert('Logeo fallido' + resultIngreso);
   });
 }
+
+function egresoUsuario() {
+  $.ajax({
+    type: 'post',
+    url: 'nexo.php',
+    data: {
+      instruccion: 'egresoUsuario',
+    },
+  }).then(function (resultEgreso) {
+    alert('Deslogeo exitoso: ' + resultEgreso);
+    window.location = 'index.php';
+  },
+
+  function (resultEgreso) {
+    alert('Deslogeo fallido: ' + resultEgreso);
+  });
+}
