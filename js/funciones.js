@@ -43,3 +43,34 @@ function egresoUsuario() {
     alert('Deslogeo fallido: ' + resultEgreso);
   });
 }
+
+function ingresoPatente() {
+  $.ajax({
+    type: 'post',
+    url: 'nexo.php',
+    data: {
+      instruccion: 'ingresoPatente',
+    },
+  }).then(function (resultPatente) {
+    $('#contenido').html(resultPatente);
+  },
+
+  function (resultPatente) {
+    $('#contenido').html(resultPatente);
+  });
+}
+
+function ingresarVehiculo() {
+  $.ajax({
+    type: 'post',
+    url: 'nexo.php',
+    data: {
+      instruccion: 'ingresarVehiculo',
+      patente: $('#patente').val(),
+    },
+  }).then(function (resultVehiculo) {
+    alert('Vehiculo ingresó correctamente');
+  }, function (resultVehiculo) {
+    alert('Fallo el ingreso del vehiculo');
+  });
+}

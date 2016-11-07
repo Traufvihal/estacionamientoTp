@@ -27,7 +27,7 @@ if (!isset($_SESSION['user'])) {
           <a class="navbar-brand" href="#">Menu</a>
         </div>
         <ul class="nav navbar-nav">
-          <li><a class="btn" onclick="">Ingreso patente</a></li>
+          <li><a class="btn" onclick="ingresoPatente()">Ingreso patente</a></li>
           <li><a class="btn" onclick="">Sacar patente</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Grillas <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -43,8 +43,8 @@ if (!isset($_SESSION['user'])) {
         </ul>
       </div>
     </nav>
-    <section>
-      
+    <section id="contenido">
+
     </section>
     <footer></footer>
   </body>

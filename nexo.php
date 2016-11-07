@@ -17,6 +17,10 @@ if (isset($_POST['instruccion'])) {
         echo "no salió";
       }
       break;
+
+    case 'ingresoPatente':
+      echo include 'paginas/ingreso.html';
+      break;
   }
 }
 
