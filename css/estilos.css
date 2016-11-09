@@ -1,38 +1,44 @@
-.contenido{
-    width: 90%;
-    margin-left:20px;
-}
-#footer {
-  height: 50px;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: gray;
-  padding-top: 10px;
-  color: white;
-}
-#footer a {
-  color: black;
-}
-#botonera {
-  display: none;
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
 }
 
-#mensaje {
-  margin-top:100px;
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
 }
-.h1, h1 {
-    font-size: 36px;
-    padding: 15px;
-    margin-left: 30px;
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
 }
-.container-fluid {
-    padding-right: 15px;
-    padding-left: 50px;
-    margin-right: auto;
-    margin-left: auto;
+.form-signin .checkbox {
+  font-weight: normal;
 }
-#listTable tr td a {
-  font-size: 18px;
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin .btn {
+  background-color: #333;
+  color: #9d9d9d;
 }

@@ -5,18 +5,33 @@
     <title>Estacionamiento TP</title>
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/funciones.js"></script>
+    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="css/bootstrap/js/bootstrap.js">
 
     </script>
   </head>
   <body>
+    <div class="container">
+      <form class="form-signin" method="post" onsubmit="ingresarUsuario();return false">
+        <h2 class="form-signin-heading">Ingrese su usuario</h2>
 
-    <form class="" method="post" onsubmit="ingresarUsuario();return false">
-      <input type="email" name="email" placeholder="Ingrese su e-mail" id="email">
-      <input type="password" name="pass" placeholder="Ingrese su contraseña" id="pass">
-      <input type="submit" name="ingresar" value="Ingresar">
-      <input type="button" name="usuario" value="Test Usuario" onclick="completarUsr()">
-      <input type="button" name="admin" value="Test Admin" onclick="completarAdm()">
-    </form>
+        <label class="sr-only" for="email">Email</label>
+        <input class="form-control" type="email" name="email" placeholder="Ingrese su e-mail" id="email">
 
+        <label class="sr-only" for="pass">Contraseña</label>
+        <input class="form-control" type="password" name="pass" placeholder="Ingrese su contraseña" id="pass">
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="recordarme">Recordarme</input>
+          </label>
+        </div>
+
+        <input class="btn btn-lg btn-primary btn-block" type="submit" name="ingresar" value="Ingresar">
+        <input class="btn btn-lg btn-primary btn-block" type="button" name="usuario" value="Test Usuario" onclick="completarUsr()">
+        <input class="btn btn-lg btn-primary btn-block" type="button" name="admin" value="Test Admin" onclick="completarAdm()">
+      </form>
+    </div>
   </body>
 </html>
