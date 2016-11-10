@@ -19,7 +19,11 @@ if (isset($_POST['instruccion'])) {
       break;
 
     case 'ingresoPatente':
-      echo include 'paginas/ingreso.html';
+      include 'paginas/ingreso.html';
+      break;
+
+    case 'egresoPatente':
+      include 'paginas/salida.html';
       break;
   }
 }

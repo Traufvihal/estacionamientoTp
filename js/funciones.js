@@ -44,12 +44,12 @@ function egresoUsuario() {
   });
 }
 
-function ingresoPatente() {
+function cargar(orden) {
   $.ajax({
     type: 'post',
     url: 'nexo.php',
     data: {
-      instruccion: 'ingresoPatente',
+      instruccion: orden,
     },
   }).then(function (resultPatente) {
     $('#contenido').html(resultPatente);
