@@ -1,5 +1,7 @@
 <?php
 session_start();
+include 'clases/Patente.php';
+
 if (isset($_POST['instruccion'])) {
   switch ($_POST['instruccion']) {
 
@@ -24,6 +26,13 @@ if (isset($_POST['instruccion'])) {
 
     case 'egresoPatente':
       include 'paginas/salida.html';
+      break;
+
+    case 'ingresarVehiculo':
+
+      $patente = new Patente($_POST['patente']);
+      $patente->insertarPatente();
+      echo 'Patente cargada!';
       break;
   }
 }

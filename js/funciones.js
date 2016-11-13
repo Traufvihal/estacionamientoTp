@@ -44,12 +44,12 @@ function egresoUsuario() {
   });
 }
 
-function cargar(orden) {
+function ingresoPatente() {
   $.ajax({
     type: 'post',
     url: 'nexo.php',
     data: {
-      instruccion: orden,
+      instruccion: 'ingresoPatente',
     },
   }).then(function (resultPatente) {
     $('#contenido').html(resultPatente);
@@ -60,6 +60,15 @@ function cargar(orden) {
   });
 }
 
+function estacionados() {
+  $.get('paginas/nuevoForm.html',function(data) {
+    $( "#contenidoSeccion" ).html( data );
+  });
+}
+// $.get('paginas/nuevoForm.html',function( data ) {
+//   $( "#contenidoSeccion" ).html( data );
+// });
+
 function ingresarVehiculo() {
   $.ajax({
     type: 'post',
@@ -69,8 +78,10 @@ function ingresarVehiculo() {
       patente: $('#patente').val(),
     },
   }).then(function (resultVehiculo) {
-    alert('Vehiculo ingresó correctamente');
-  }, function (resultVehiculo) {
+    alert(resultVehiculo);
+  },
+
+  function (resultVehiculo) {
     alert('Fallo el ingreso del vehiculo');
   });
 }
