@@ -6,11 +6,13 @@ if (isset($_POST['instruccion'])) {
   switch ($_POST['instruccion']) {
 
     case 'ingresarUsuario':
+
       $_SESSION['user'] = $_POST['email'];
       echo $_SESSION['user'];
       break;
 
     case 'egresoUsuario':
+
       if (isset($_SESSION['user'])) {
         $_SESSION['user'] = null;
         session_destroy();
@@ -20,19 +22,19 @@ if (isset($_POST['instruccion'])) {
       }
       break;
 
-    case 'ingresoPatente':
-      include 'paginas/ingreso.html';
-      break;
-
-    case 'egresoPatente':
-      include 'paginas/salida.html';
-      break;
-
     case 'ingresarVehiculo':
 
-      $patente = new Patente($_POST['patente']);
+      $patente = new Patente();
+  		$patente->numero = $_POST['patente'];
+  		$patente->fecha = date('Y-m-d');
+  		$patente->hora = date('h:i:s');
       $patente->insertarPatente();
       echo 'Patente cargada!';
+      break;
+
+    case 'traerEstacionados':
+
+      echo json_encode(Patente::traerPatentes());
       break;
   }
 }

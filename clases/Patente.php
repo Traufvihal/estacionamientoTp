@@ -6,13 +6,6 @@ class Patente
   public $fecha;
   public $hora;
 
-	function __construct($num){
-
-		$this->numero = $num;
-		$this->fecha = date('Ymd');
-		$this->hora = date('his');
-	}
-
   // public function BorrarCd()
 	//  {
 	//
@@ -86,10 +79,11 @@ class Patente
 
 	 public static function traerPatentes()
 	 {
+		 include 'clases/AccesoDatos.php';
 		 $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 		 $consulta =$objetoAccesoDato->RetornarConsulta("SELECT id,numero,fecha,hora FROM vehiculos");
 		 $consulta->execute();
-		 return $consulta->fetchAll(PDO::FETCH_CLASS, "cd");
+		 return $consulta->fetchAll(PDO::FETCH_CLASS, "Patente");
 	 }
 	//  public function InsertarElCdParametros()
 	//  {

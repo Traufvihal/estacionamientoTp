@@ -44,30 +44,46 @@ function egresoUsuario() {
   });
 }
 
-function ingresoPatente() {
+function estacionados() {
+  $.post('paginas/salida.html', function (data) {
+    $('#contenido').html(data);
+    traerEstacionados();
+  });
+}
+
+function traerEstacionados() {
   $.ajax({
     type: 'post',
     url: 'nexo.php',
     data: {
-      instruccion: 'ingresoPatente',
+      instruccion: 'traerEstacionados',
     },
-  }).then(function (resultPatente) {
-    $('#contenido').html(resultPatente);
+  }).then(function (resultEstacionados) {
+
+    // alert(lista[1].numero);
+
+    var lista = jQuery.parseJSON(resultEstacionados);
+    for (var i = 0; i < lista.length; i++) {
+      var row = '<tr>';
+      row += '<td>' + lista[i].numero + '</td>';
+      row += '<td>' + lista[i].fecha + '</td>';
+      row += '<td>' + lista[i].hora + '</td>';
+      row += '<td> <a><span class=\"glyphicon glyphicon-arrow-left\"></span> </a> </td>';
+      $('#tabla').append(row);
+    }
+
   },
 
-  function (resultPatente) {
-    $('#contenido').html(resultPatente);
+  function (resultEstacionados) {
+    alert('No funciona' + resultEstacionados);
   });
 }
 
-function estacionados() {
-  $.get('paginas/nuevoForm.html',function(data) {
-    $( "#contenidoSeccion" ).html( data );
+function ingresoPatente() {
+  $.post('paginas/ingreso.html', function (data) {
+    $('#contenido').html(data);
   });
 }
-// $.get('paginas/nuevoForm.html',function( data ) {
-//   $( "#contenidoSeccion" ).html( data );
-// });
 
 function ingresarVehiculo() {
   $.ajax({
