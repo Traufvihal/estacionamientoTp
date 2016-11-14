@@ -36,6 +36,11 @@ if (isset($_POST['instruccion'])) {
 
       echo json_encode(Patente::traerPatentes());
       break;
+
+    case 'cobrar':
+      echo $_POST['idCobrar'];
+      Patente::cobrar($_POST['idCobrar']);
+      break;
   }
 }
 

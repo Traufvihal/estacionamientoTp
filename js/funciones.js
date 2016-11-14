@@ -60,15 +60,15 @@ function traerEstacionados() {
     },
   }).then(function (resultEstacionados) {
 
-    // alert(lista[1].numero);
-
     var lista = jQuery.parseJSON(resultEstacionados);
     for (var i = 0; i < lista.length; i++) {
       var row = '<tr>';
       row += '<td>' + lista[i].numero + '</td>';
       row += '<td>' + lista[i].fecha + '</td>';
       row += '<td>' + lista[i].hora + '</td>';
-      row += '<td> <a><span class=\"glyphicon glyphicon-arrow-left\"></span> </a> </td>';
+      row += '<td><button type=\"button\" name=\"cob\" class=\"btn btn-default\"';
+      row += ' onclick=\"cobrar(' + lista[i].id + ')\">Cobrar <span class=\"glyphicon'
+      row += ' glyphicon-ok\"></span></button></td>';
       $('#tabla').append(row);
     }
 
@@ -77,6 +77,24 @@ function traerEstacionados() {
   function (resultEstacionados) {
     alert('No funciona' + resultEstacionados);
   });
+}
+
+function cobrar(id) {
+  $.ajax({
+      type: 'post',
+      url: 'nexo.php',
+      data: {
+        instruccion: 'cobrar',
+        idCobrar: id,
+      },
+    }).then(function (resultCobrar) {
+      alert(resultCobrar);
+    },
+
+    function (resultCobrar) {
+      alert('No cobrado $ :(');
+
+    });
 }
 
 function ingresoPatente() {

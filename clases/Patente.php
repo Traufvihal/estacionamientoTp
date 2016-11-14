@@ -6,19 +6,16 @@ class Patente
   public $fecha;
   public $hora;
 
-  // public function BorrarCd()
-	//  {
-	//
-	// 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-	// 		$consulta =$objetoAccesoDato->RetornarConsulta("
-	// 			delete
-	// 			from cds
-	// 			WHERE id=:id");
-	// 			$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);
-	// 			$consulta->execute();
-	// 			return $consulta->rowCount();
-	//
-	//  }
+	public static function cobrar($idCobrar){
+
+		include 'clases/AccesoDatos.php';
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		$consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM vehiculos	WHERE id=:id");
+		$consulta->bindValue(':id',$idCobrar, PDO::PARAM_INT);
+		$consulta->execute();
+		return $consulta->rowCount();
+
+	}
 	//  	public static function BorrarCdPorAnio($año)
 	//  {
 	//
