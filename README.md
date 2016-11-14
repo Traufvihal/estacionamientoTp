@@ -2,7 +2,7 @@
 
 Nuestro sistema debe permitir el ingreso y salida de vehículos a nuestra playa de estacionamiento y debe calcular el costo del tiempo transcurrido.
 
- ### Requerimientos minimos para la entrega:
+### Requerimientos minimos para la entrega:
   - Solo puede presentarse si esta en un sitio Web.
   - Debe usar base de datos.
   - Debe usar JSON.
