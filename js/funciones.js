@@ -66,9 +66,12 @@ function traerEstacionados() {
       row += '<td>' + lista[i].numero + '</td>';
       row += '<td>' + lista[i].fecha + '</td>';
       row += '<td>' + lista[i].hora + '</td>';
-      row += '<td><button type=\"button\" name=\"cob\" class=\"btn btn-default\"';
+      row += '<td><button type=\"button\" name=\"cob\" class=\"btn btn-success\"';
       row += ' onclick=\"cobrar(' + lista[i].id + ')\">Cobrar <span class=\"glyphicon';
-      row += ' glyphicon-ok\"></span></button></td>';
+      row += ' glyphicon-usd\"></span></button>';
+      row += ' <button type=\"button\" name=\"cob\" class=\"btn btn-warning\"';
+      row += ' onclick=\"cobrar(' + lista[i].id + ',' + lista[i].numero + ')\">Editar <span class=\"glyphicon';
+      row += ' glyphicon-edit\"></span></button></td>';
       $('#tabla').append(row);
     }
 
