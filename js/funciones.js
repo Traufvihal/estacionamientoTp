@@ -67,7 +67,7 @@ function traerEstacionados() {
       row += '<td>' + lista[i].fecha + '</td>';
       row += '<td>' + lista[i].hora + '</td>';
       row += '<td><button type=\"button\" name=\"cob\" class=\"btn btn-default\"';
-      row += ' onclick=\"cobrar(' + lista[i].id + ')\">Cobrar <span class=\"glyphicon'
+      row += ' onclick=\"cobrar(' + lista[i].id + ')\">Cobrar <span class=\"glyphicon';
       row += ' glyphicon-ok\"></span></button></td>';
       $('#tabla').append(row);
     }
