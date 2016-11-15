@@ -10,6 +10,7 @@ function completarUsr() {
 }
 
 function ingresarUsuario() {
+
   $.ajax({
     type: 'post',
     url: 'nexo.php',
@@ -19,7 +20,7 @@ function ingresarUsuario() {
       pass: $('#pass').val(),
     },
   }).then(function (resultIngreso) {
-    // alert('Logeo exitoso: ' + resultIngreso);
+
     window.location = 'index.php';
   },
 
@@ -29,6 +30,7 @@ function ingresarUsuario() {
 }
 
 function egresoUsuario() {
+
   $.ajax({
     type: 'post',
     url: 'nexo.php',
@@ -36,7 +38,7 @@ function egresoUsuario() {
       instruccion: 'egresoUsuario',
     },
   }).then(function (resultEgreso) {
-    // alert('Deslogeo exitoso: ' + resultEgreso);
+
     window.location = 'index.php';
   },
 
@@ -46,6 +48,7 @@ function egresoUsuario() {
 }
 
 function estacionados() {
+
   $.post('paginas/salida.html', function (data) {
     $('#contenido').html(data);
     traerEstacionados();
@@ -53,6 +56,7 @@ function estacionados() {
 }
 
 function traerEstacionados() {
+
   $.ajax({
     type: 'post',
     url: 'nexo.php',
@@ -84,6 +88,7 @@ function traerEstacionados() {
 }
 
 function cobrar(i) {
+
   $.ajax({
       type: 'post',
       url: 'nexo.php',
@@ -95,12 +100,11 @@ function cobrar(i) {
         cobrarHora: lista[i].hora,
       },
     }).then(function (resultCobrar) {
-
-      console.log('hasta aca llegue');
+      var mensajeModal = 'Debe pagar: $' + resultCobrar + ' pesos.';
       $('#myModal').modal({ keyboard: false });
-      $('#contenidoModal').append('Debe pagar: $');
-      $('#contenidoModal').append(resultCobrar);
-      $('#contenidoModal').append(' pesos.');
+      $('#titleModal').html('Costo por estadia:');
+      $('#contentModal').show();
+      $('#contentModal').html(mensajeModal);
       estacionados();
     },
 
@@ -112,11 +116,13 @@ function cobrar(i) {
 
 function ingresoPatente() {
   $.post('paginas/ingreso.html', function (data) {
+
     $('#contenido').html(data);
   });
 }
 
 function ingresarVehiculo() {
+
   $.ajax({
     type: 'post',
     url: 'nexo.php',
@@ -125,7 +131,15 @@ function ingresarVehiculo() {
       patente: $('#patente').val(),
     },
   }).then(function (resultVehiculo) {
-    estacionados();
+    if (resultVehiculo == 'TRUE') {
+      estacionados();
+    }else {
+      var datosPatente = jQuery.parseJSON(resultVehiculo);
+      $('#titleModal').html('El vehiculo ya se encuentra esctacionado.');
+      var mensajeModal = 'El vehiculo ya se encuentra esctacionado.';
+      $('#myModal').modal({ keyboard: false });
+      $('#contentModal').hide();
+    }
   },
 
   function (resultVehiculo) {

@@ -13,7 +13,7 @@ class Patente
 		$consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM vehiculos	WHERE id=:id");
 		$consulta->bindValue(':id',$idCobrar, PDO::PARAM_INT);
 		$consulta->execute();
-		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO registros (numero,fechaEntrada,horaEntrada,fechaSalida,horaSalida,importeCobrado)	VALUES ('$numeroReg','$fechaEntrada','$fechaSalida','$horaEntrada','$horaSalida','$importe')");
+		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO registros (numero,fechaEntrada,fechaSalida,horaEntrada,horaSalida,importeCobrado)	VALUES ('$numeroReg','$fechaEntrada','$fechaSalida','$horaEntrada','$horaSalida','$importe')");
 		$consulta->bindValue(':id',$idCobrar, PDO::PARAM_INT);
 		$consulta->execute();
 
@@ -31,8 +31,8 @@ class Patente
 	public function insertarPatente()
 	 {
 		 		include 'clases/AccesoDatos.php';
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO vehiculos (numero,fecha,hora)VALUES('$this->numero','$this->fecha','$this->hora')");
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO vehiculos (numero,fecha,hora)VALUES('$this->numero','$this->fecha','$this->hora')");
 				$consulta->execute();
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 

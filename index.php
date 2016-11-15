@@ -56,9 +56,9 @@ if (!isset($_SESSION['user'])) {
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Costo por estadia:</h4>
+            <h4 class="modal-title" id="titleModal"></h4>
           </div>
-          <div class="modal-body"id="contenidoModal">
+          <div class="modal-body"id="contentModal">
 
           </div>
           <div class="modal-footer">

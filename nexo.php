@@ -23,13 +23,19 @@ if (isset($_POST['instruccion'])) {
       break;
 
     case 'ingresarVehiculo':
-
+      $listaPatentes = Patente::traerPatentes();
+      foreach ($listaPatentes as $key => $value) {
+        if ($value->numero == $_POST['patente']) {
+          echo json_encode($value);
+          return;
+        }
+      }
       $patente = new Patente();
   		$patente->numero = strtoupper($_POST['patente']);
   		$patente->fecha = date('Y-m-d');
   		$patente->hora = date('h:i');
       $patente->insertarPatente();
-      echo 'Patente cargada!';
+      echo "TRUE";
       break;
 
     case 'traerEstacionados':
@@ -38,7 +44,6 @@ if (isset($_POST['instruccion'])) {
       break;
 
     case 'cobrar':
-
       $patente = new Patente();
       $patente->numero = strtoupper($_POST['cobrarNumero']);
       $patente->fecha = $_POST['cobrarFecha'];
