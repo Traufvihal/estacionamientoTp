@@ -1,3 +1,4 @@
+var lista;
 function completarAdm() {
   $('#email').val('admin@estacionamiento.com');
   $('#pass').val('123admin');
@@ -18,7 +19,7 @@ function ingresarUsuario() {
       pass: $('#pass').val(),
     },
   }).then(function (resultIngreso) {
-    alert('Logeo exitoso: ' + resultIngreso);
+    // alert('Logeo exitoso: ' + resultIngreso);
     window.location = 'index.php';
   },
 
@@ -35,7 +36,7 @@ function egresoUsuario() {
       instruccion: 'egresoUsuario',
     },
   }).then(function (resultEgreso) {
-    alert('Deslogeo exitoso: ' + resultEgreso);
+    // alert('Deslogeo exitoso: ' + resultEgreso);
     window.location = 'index.php';
   },
 
@@ -60,17 +61,17 @@ function traerEstacionados() {
     },
   }).then(function (resultEstacionados) {
 
-    var lista = jQuery.parseJSON(resultEstacionados);
+    lista = jQuery.parseJSON(resultEstacionados);
     for (var i = 0; i < lista.length; i++) {
       var row = '<tr>';
       row += '<td>' + lista[i].numero + '</td>';
       row += '<td>' + lista[i].fecha + '</td>';
       row += '<td>' + lista[i].hora + '</td>';
       row += '<td><button type=\"button\" name=\"cob\" class=\"btn btn-success\"';
-      row += ' onclick=\"cobrar(' + lista[i].id + ')\">Cobrar <span class=\"glyphicon';
+      row += ' onclick=\"cobrar(' + i + ')\">Cobrar <span class=\"glyphicon';
       row += ' glyphicon-usd\"></span></button>';
       row += ' <button type=\"button\" name=\"cob\" class=\"btn btn-warning\"';
-      row += ' onclick=\"cobrar(' + lista[i].id + ',' + lista[i].numero + ')\">Editar <span class=\"glyphicon';
+      row += ' data-toggle=\"modal\" data-target=\"#myModal\">Editar <span class=\"glyphicon';
       row += ' glyphicon-edit\"></span></button></td>';
       $('#tabla').append(row);
     }
@@ -82,16 +83,25 @@ function traerEstacionados() {
   });
 }
 
-function cobrar(id) {
+function cobrar(i) {
   $.ajax({
       type: 'post',
       url: 'nexo.php',
       data: {
         instruccion: 'cobrar',
-        idCobrar: id,
+        cobrarId: lista[i].id,
+        cobrarNumero: lista[i].numero,
+        cobrarFecha: lista[i].fecha,
+        cobrarHora: lista[i].hora,
       },
     }).then(function (resultCobrar) {
-      alert(resultCobrar);
+
+      console.log('hasta aca llegue');
+      $('#myModal').modal({ keyboard: false });
+      $('#contenidoModal').append('Debe pagar: $');
+      $('#contenidoModal').append(resultCobrar);
+      $('#contenidoModal').append(' pesos.');
+      estacionados();
     },
 
     function (resultCobrar) {
@@ -115,7 +125,7 @@ function ingresarVehiculo() {
       patente: $('#patente').val(),
     },
   }).then(function (resultVehiculo) {
-    alert(resultVehiculo);
+    estacionados();
   },
 
   function (resultVehiculo) {

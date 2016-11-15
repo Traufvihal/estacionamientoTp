@@ -25,9 +25,9 @@ if (isset($_POST['instruccion'])) {
     case 'ingresarVehiculo':
 
       $patente = new Patente();
-  		$patente->numero = $_POST['patente'];
+  		$patente->numero = strtoupper($_POST['patente']);
   		$patente->fecha = date('Y-m-d');
-  		$patente->hora = date('h:i:s');
+  		$patente->hora = date('h:i');
       $patente->insertarPatente();
       echo 'Patente cargada!';
       break;
@@ -38,8 +38,14 @@ if (isset($_POST['instruccion'])) {
       break;
 
     case 'cobrar':
-      echo $_POST['idCobrar'];
-      Patente::cobrar($_POST['idCobrar']);
+
+      $patente = new Patente();
+      $patente->numero = strtoupper($_POST['cobrarNumero']);
+      $patente->fecha = $_POST['cobrarFecha'];
+  		$patente->hora = $_POST['cobrarHora'];
+      $minutos = $patente->diferencia();
+      echo $minutos;
+      Patente::cobrar($_POST['cobrarId'],strtoupper($_POST['cobrarNumero']),$_POST['cobrarFecha'],$_POST['cobrarHora'], date('Y-m-d'), date('h:i'), $minutos);
       break;
   }
 }
