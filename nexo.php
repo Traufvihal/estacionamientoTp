@@ -52,6 +52,10 @@ if (isset($_POST['instruccion'])) {
       echo $minutos;
       Patente::cobrar($_POST['cobrarId'],strtoupper($_POST['cobrarNumero']),$_POST['cobrarFecha'],$_POST['cobrarHora'], date('Y-m-d'), date('h:i'), $minutos);
       break;
+
+    // case 'traerImportes':
+    //   echo json_encode(Patente::traerPatentes());
+    //   break;
   }
 }
 
