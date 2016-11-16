@@ -51,9 +51,14 @@ function egresoUsuario() {
 
 function estacionados() {
 
-  $.post('paginas/salida.html', function (data) {
-    $('#contenido').html(data);
+  $.post('paginas/salida.html', function (contenidoSalida) {
+    $('#contenido').html(contenidoSalida);
+  }).then(function (salidaCargada) {
     traerEstacionados();
+  },
+
+  function (salidaCargada) {
+    alert('NO funcionó: ' + salidaCargada);
   });
 }
 
