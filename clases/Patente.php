@@ -35,8 +35,6 @@ class Patente
 				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO vehiculos (numero,fecha,hora)VALUES('$this->numero','$this->fecha','$this->hora')");
 				$consulta->execute();
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
-
-
 	 }
 
 	 public static function traerPatentes()

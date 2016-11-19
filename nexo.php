@@ -2,14 +2,23 @@
 session_start();
 include 'clases/Patente.php';
 include 'clases/Registro.php';
+include 'clases/Usuario.php';
 
 if (isset($_POST['instruccion'])) {
   switch ($_POST['instruccion']) {
 
     case 'ingresarUsuario':
 
-      $_SESSION['user'] = $_POST['email'];
-      echo $_SESSION['user'];
+      $usuario = Usuario::existeUsuario($_POST['email'],$_POST['pass']);
+      if ($usuario != null) {
+        $_SESSION['user'] = $usuario->email;
+        $_SESSION['access'] = $usuario->access;
+        echo 'true';
+        break;
+      }else {
+        echo 'false';
+        break;
+      }
       break;
 
     case 'egresoUsuario':
@@ -54,7 +63,19 @@ if (isset($_POST['instruccion'])) {
       break;
 
     case 'traerImportes':
-      echo json_encode(Registro::traerRegistros());
+      if ($_SESSION['access'] == 'adm') {
+        echo json_encode(Registro::traerRegistros());
+      }else {
+        echo "false";
+      }
+      break;
+
+    case 'traerUsuarios':
+      if ($_SESSION['access'] == 'adm') {
+        echo json_encode(Usuario::traerUsuarios());
+      }else {
+        echo "false";
+      }
       break;
   }
 }

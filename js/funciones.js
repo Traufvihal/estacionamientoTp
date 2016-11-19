@@ -1,6 +1,6 @@
 var lista;
 var registros;
-var usuarios;
+var listaUsuarios;
 function completarAdm() {
   $('#email').val('admin@estacionamiento.com');
   $('#pass').val('123admin');
@@ -22,8 +22,12 @@ function ingresarUsuario() {
       pass: $('#pass').val(),
     },
   }).then(function (resultIngreso) {
-
-    window.location = 'index.php';
+    console.log(resultIngreso);
+    if (resultIngreso == 'true') {
+      window.location = 'index.php';
+    }else {
+      alert('El usuario es incorrecto.');
+    }
   },
 
   function (resultIngreso) {
@@ -167,6 +171,19 @@ function importes() {
   });
 }
 
+function usuarios() {
+
+  $.post('paginas/usuarios.html', function (contenidoUsuarios) {
+    $('#contenido').html(contenidoUsuarios);
+  }).then(function (usuariosCargado) {
+    traerUsuarios();
+  },
+
+  function (usuariosCargado) {
+    alert('NO funcionó: ' + usuariosCargado);
+  });
+}
+
 function traerImportes() {
 
   $.ajax({
@@ -177,23 +194,60 @@ function traerImportes() {
     },
   }).then(function (resultRegistros) {
 
-    registros = jQuery.parseJSON(resultRegistros);
+    if (resultRegistros != 'false') {
 
-    for (var i = 0; i < registros.length; i++) {
-      var row = '<tr>';
-      row += '<td>' + registros[i].numero + '</td>';
-      row += '<td>' + registros[i].fechaEntrada + '</td>';
-      row += '<td>' + registros[i].fechaSalida + '</td>';
-      row += '<td>' + registros[i].horaEntrada + '</td>';
-      row += '<td>' + registros[i].horaSalida + '</td>';
-      row += '<td>' + registros[i].importeCobrado + '</td>';
-      row += '</tr>';
-      $('#tabla').append(row);
+      registros = jQuery.parseJSON(resultRegistros);
+
+      for (var i = 0; i < registros.length; i++) {
+        var row = '<tr>';
+        row += '<td>' + registros[i].numero + '</td>';
+        row += '<td>' + registros[i].fechaEntrada + '</td>';
+        row += '<td>' + registros[i].fechaSalida + '</td>';
+        row += '<td>' + registros[i].horaEntrada + '</td>';
+        row += '<td>' + registros[i].horaSalida + '</td>';
+        row += '<td>' + registros[i].importeCobrado + '</td>';
+        row += '</tr>';
+        $('#tabla').append(row);
+      }
+    }else {
+      $('#contenido').html('<h2>No tiene permiso para ver importes.</h2>');
     }
 
   },
 
   function (resultRegistros) {
     alert('No funciona' + resultRegistros);
+  });
+}
+
+function traerUsuarios() {
+
+  $.ajax({
+    type: 'post',
+    url: 'nexo.php',
+    data: {
+      instruccion: 'traerUsuarios',
+    },
+  }).then(function (resultUsuarios) {
+
+    if (resultUsuarios != 'false') {
+
+      listaUsuarios = jQuery.parseJSON(resultUsuarios);
+
+      for (var i = 0; i < listaUsuarios.length; i++) {
+        var row = '<tr>';
+        row += '<td>' + listaUsuarios[i].email + '</td>';
+        row += '<td>' + listaUsuarios[i].access + '</td>';
+        row += '</tr>';
+        $('#tabla').append(row);
+      }
+    }else {
+      $('#contenido').html('<h2>No tiene permiso para ver importes.</h2>');
+    }
+
+  },
+
+  function (resultUsuarios) {
+    alert('No funciona' + resultUsuarios);
   });
 }
