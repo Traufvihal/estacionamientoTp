@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'clases/Patente.php';
+include 'clases/Registro.php';
 
 if (isset($_POST['instruccion'])) {
   switch ($_POST['instruccion']) {
@@ -38,11 +39,6 @@ if (isset($_POST['instruccion'])) {
       echo "TRUE";
       break;
 
-    case 'traerEstacionados':
-
-      echo json_encode(Patente::traerPatentes());
-      break;
-
     case 'cobrar':
       $patente = new Patente();
       $patente->numero = strtoupper($_POST['cobrarNumero']);
@@ -53,9 +49,13 @@ if (isset($_POST['instruccion'])) {
       Patente::cobrar($_POST['cobrarId'],strtoupper($_POST['cobrarNumero']),$_POST['cobrarFecha'],$_POST['cobrarHora'], date('Y-m-d'), date('h:i'), $minutos);
       break;
 
-    // case 'traerImportes':
-    //   echo json_encode(Patente::traerPatentes());
-    //   break;
+    case 'traerEstacionados':
+      echo json_encode(Patente::traerPatentes());
+      break;
+
+    case 'traerImportes':
+      echo json_encode(Registro::traerRegistros());
+      break;
   }
 }
 

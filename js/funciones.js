@@ -154,43 +154,46 @@ function ingresarVehiculo() {
   });
 }
 
-// function importes() {
-//
-//   $.post('paginas/importes.html', function (data) {
-//     $('#contenido').html(data);
-//     traerImportes();
-//   });
-// }
-//
-// function traerImportes() {
-//
-//   $.ajax({
-//     type: 'post',
-//     url: 'nexo.php',
-//     data: {
-//       instruccion: 'traerImportes',
-//     },
-//   }).then(function (resultRegistros) {
-//     console.log(resultRegistros);
+function importes() {
 
-    // registros = jQuery.parseJSON(resultEstacionados);
-    // for (var i = 0; i < lista.length; i++) {
-    //   var row = '<tr>';
-    //   row += '<td>' + registros[i].numero + '</td>';
-    //   row += '<td>' + registros[i].fecha + '</td>';
-    //   row += '<td>' + registros[i].hora + '</td>';
-    //   row += '<td><button type=\"button\" name=\"cob\" class=\"btn btn-success\"';
-    //   row += ' onclick=\"cobrar(' + i + ')\">Cobrar <span class=\"glyphicon';
-    //   row += ' glyphicon-usd\"></span></button>';
-    //   row += ' <button type=\"button\" name=\"cob\" class=\"btn btn-warning\"';
-    //   row += ' data-toggle=\"modal\" data-target=\"#myModal\">Editar <span class=\"glyphicon';
-    //   row += ' glyphicon-edit\"></span></button></td>';
-    //   $('#tabla').append(row);
-    // }
+  $.post('paginas/importes.html', function (contenidoImportes) {
+    $('#contenido').html(contenidoImportes);
+  }).then(function (importesCargado) {
+    traerImportes();
+  },
 
-  // },
-  //
-  // function (resultRegistros) {
-  //   alert('No funciona' + resultRegistros);
-  // });
-// }
+  function (importesCargado) {
+    alert('NO funcionó: ' + importesCargado);
+  });
+}
+
+function traerImportes() {
+
+  $.ajax({
+    type: 'post',
+    url: 'nexo.php',
+    data: {
+      instruccion: 'traerImportes',
+    },
+  }).then(function (resultRegistros) {
+
+    registros = jQuery.parseJSON(resultRegistros);
+
+    for (var i = 0; i < registros.length; i++) {
+      var row = '<tr>';
+      row += '<td>' + registros[i].numero + '</td>';
+      row += '<td>' + registros[i].fechaEntrada + '</td>';
+      row += '<td>' + registros[i].fechaSalida + '</td>';
+      row += '<td>' + registros[i].horaEntrada + '</td>';
+      row += '<td>' + registros[i].horaSalida + '</td>';
+      row += '<td>' + registros[i].importeCobrado + '</td>';
+      row += '</tr>';
+      $('#tabla').append(row);
+    }
+
+  },
+
+  function (resultRegistros) {
+    alert('No funciona' + resultRegistros);
+  });
+}

@@ -31,7 +31,7 @@ if (!isset($_SESSION['user'])) {
           <li><a class="btn" onclick="estacionados()">Estacionados</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Grillas <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a class="btn" onclick="">Importes</a></li>
+              <li><a class="btn" onclick="importes()">Importes</a></li>
               <li><a class="btn" onclick="">Usuarios</a></li>
             </ul>
           </li>
