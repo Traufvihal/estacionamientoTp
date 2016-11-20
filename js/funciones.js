@@ -1,6 +1,7 @@
 var lista;
 var registros;
 var listaUsuarios;
+
 function completarAdm() {
   $('#email').val('admin@estacionamiento.com');
   $('#pass').val('123admin');
@@ -27,6 +28,7 @@ function ingresarUsuario() {
       window.location = 'index.php';
     }else {
       alert('El usuario es incorrecto.');
+      llamarModal('Error: ', 'El usuario o la contraseña no son validos.');
     }
   },
 
@@ -112,10 +114,7 @@ function cobrar(i) {
       },
     }).then(function (resultCobrar) {
       var mensajeModal = 'Debe pagar: $' + resultCobrar + ' pesos.';
-      $('#myModal').modal({ keyboard: false });
-      $('#titleModal').html('Costo por estadia:');
-      $('#contentModal').show();
-      $('#contentModal').html(mensajeModal);
+      llamarModal('Costo por estadia:', mensajeModal);
       estacionados();
     },
 
@@ -250,4 +249,17 @@ function traerUsuarios() {
   function (resultUsuarios) {
     alert('No funciona' + resultUsuarios);
   });
+}
+
+function llamarModal(titulo, mensaje) {
+
+  $('#myModal').modal({ keyboard: false });
+  $('#titleModal').html(titulo);
+  if (mensaje === '') {
+    $('#contentModal').hide();
+  }else {
+    $('#contentModal').show();
+  }
+
+  $('#contentModal').html(mensaje);
 }

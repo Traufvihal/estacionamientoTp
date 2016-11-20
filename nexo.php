@@ -1,8 +1,8 @@
 <?php
 session_start();
-include 'clases/Patente.php';
-include 'clases/Registro.php';
-include 'clases/Usuario.php';
+include_once 'clases/Patente.php';
+include_once 'clases/Registro.php';
+include_once 'clases/Usuario.php';
 
 if (isset($_POST['instruccion'])) {
   switch ($_POST['instruccion']) {

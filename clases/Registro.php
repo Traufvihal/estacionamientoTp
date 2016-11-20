@@ -16,7 +16,7 @@ class Registro
 
   public static function traerRegistros()
   {
-    include 'clases/AccesoDatos.php';
+    include_once 'clases/AccesoDatos.php';
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
     $consulta =$objetoAccesoDato->RetornarConsulta("SELECT id,numero,fechaEntrada,fechaSalida,horaEntrada,horaSalida,importeCobrado FROM registros");
     $consulta->execute();

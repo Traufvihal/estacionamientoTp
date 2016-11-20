@@ -8,7 +8,7 @@ class Patente
 
 	public static function cobrar($idCobrar,$numeroReg,$fechaEntrada, $horaEntrada, $fechaSalida, $horaSalida, $importe){
 
-		include 'clases/AccesoDatos.php';
+		include_once 'clases/AccesoDatos.php';
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 		$consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM vehiculos	WHERE id=:id");
 		$consulta->bindValue(':id',$idCobrar, PDO::PARAM_INT);
@@ -30,7 +30,7 @@ class Patente
 
 	public function insertarPatente()
 	 {
-		 		include 'clases/AccesoDatos.php';
+		 		include_once 'clases/AccesoDatos.php';
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO vehiculos (numero,fecha,hora)VALUES('$this->numero','$this->fecha','$this->hora')");
 				$consulta->execute();
@@ -39,7 +39,7 @@ class Patente
 
 	 public static function traerPatentes()
 	 {
-		 include 'clases/AccesoDatos.php';
+		 include_once 'clases/AccesoDatos.php';
 		 $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 		 $consulta =$objetoAccesoDato->RetornarConsulta("SELECT id,numero,fecha,hora FROM vehiculos");
 		 $consulta->execute();

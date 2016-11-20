@@ -12,7 +12,7 @@ class Usuario
 
    public static function existeUsuario($email,$pass){
 
-     include 'clases/AccesoDatos.php';
+     include_once 'clases/AccesoDatos.php';
      $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
      $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios WHERE email = :email AND password = :password");
      $consulta->bindValue(':email',$email, PDO::PARAM_STR);
@@ -24,7 +24,7 @@ class Usuario
 
    public static function traerUsuarios()
    {
-     include 'clases/AccesoDatos.php';
+     include_once 'clases/AccesoDatos.php';
      $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
      $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios");
      $consulta->execute();
