@@ -87,9 +87,10 @@ function traerEstacionados() {
       row += '<td><button type=\"button\" name=\"cob\" class=\"btn btn-success\"';
       row += ' onclick=\"cobrar(' + i + ')\">Cobrar <span class=\"glyphicon';
       row += ' glyphicon-usd\"></span></button>';
-      row += ' <button type=\"button\" name=\"cob\" class=\"btn btn-warning\"';
-      row += ' data-toggle=\"modal\" data-target=\"#myModal\">Editar <span class=\"glyphicon';
+      row += ' <button type=\"button\" name=\"ed\" class=\"btn btn-warning\"';
+      row += ' onclick=\"editar(' + i + ')\">Editar <span class=\"glyphicon';
       row += ' glyphicon-edit\"></span></button></td>';
+      row += '</tr>';
       $('#tabla').append(row);
     }
 
@@ -98,6 +99,30 @@ function traerEstacionados() {
   function (resultEstacionados) {
     alert('No funciona' + resultEstacionados);
   });
+}
+
+function editar(i) {
+  console.log('Valor de la row', lista[i].numero);
+
+  // $('#modificarPatente').modal({ keyboard: false });
+  // $('#modificarPatente').show();
+  // $('#modificarPatente').on('shown.bs.modal', function () {
+  //   $('#patente').attr({
+  //     value: lista[i].numero,
+  //   });
+  // });
+
+  // $('#modificarPatente').on('hide.bs.modal', function () {
+  //   $('#patente').removeAttr(value);
+  // });
+
+  // var func = 'guardarEdicion(' + i + ')';
+  // $('.btn-primary').attr('onclick', 'guardarEdicion(' + i + ')');
+
+}
+
+function guardarEdicion(i) {
+  alert('en un rato grabo' + i);
 }
 
 function cobrar(i) {

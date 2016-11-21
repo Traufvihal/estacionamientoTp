@@ -1,49 +1,23 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
+  background-image: url('../imgs/estac_mod1');
+  background-position: right top;
+  background-attachment: fixed;
 }
 
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.form-signin .btn {
-  background-color: #333;
-  color: #9d9d9d;
+body .container{
+  padding-top: 20px;
+  background-color: rgba(190,190,190,0.6);
+  border-radius: 15px;
 }
 
-header {
+.table-bordered th,
+.table-bordered td {
+  border: 2px solid black !important;
+  color: black;
+  font-size: 18px;
+}
+
+header h1 {
+  color: rgb(190,190,190);
   margin-left: 15px;
 }

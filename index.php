@@ -12,10 +12,9 @@ if (!isset($_SESSION['user'])) {
     <title>Playa de estacionamiento</title>
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/funciones.js"></script>
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
-    <script src="css/bootstrap/js/bootstrap.js">
-
-    </script>
+    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+    <script src="css/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/estilos.css">
   </head>
   <body>
     <header>
@@ -46,9 +45,7 @@ if (!isset($_SESSION['user'])) {
 
     </section>
 
-    <!-- Modal -->
-
-    <!-- Modal -->
+    <!-- Modal Mensaje -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
 
@@ -68,7 +65,7 @@ if (!isset($_SESSION['user'])) {
 
       </div>
     </div>
-
+    <!-- Termina Modal Mensaje -->
     <!-- <footer></footer> -->
   </body>
 </html>

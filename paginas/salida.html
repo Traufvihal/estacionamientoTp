@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table table-bordered">
+  <table class="table table-bordered text-center">
    <tr>
      <th>Patente</th>
      <th>Fecha de ingreso</th>
@@ -11,3 +11,24 @@
     </tbody>
   </table>
 </div>
+<!-- Modal -->
+  <div class="modal fade" id="modificarPatente" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="">Editar</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="patente">Patente</label>
+            <input type="text" class="form-control" id="patente" value=""></input>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
